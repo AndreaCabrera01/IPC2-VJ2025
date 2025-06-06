@@ -96,7 +96,30 @@ def EscribirArchivoET():
 
     tree = ET.ElementTree(root)
     tree.write('promedioPorBanco_ET.xml', encoding='UTF-8', xml_declaration=True)
-        
+
+def EscribirArchivoMD():
+    doc = minidom.Document()
+    root = doc.createElement('listadoReporte')
+    doc.appendChild(root)
+
+    for banco in listaBancos:
+        banco_elem = doc.createElement('Banco')
+        banco_elem.setAttribute('nombre', banco.nombre)
+
+
+        direccion_elem = doc.createElement('direccion')
+        direccion_elem.appendChild(doc.createTextNode(banco.direccion))
+        banco_elem.appendChild(direccion_elem)
+
+        promedio_elem = doc.createElement('promedioSaldo')
+        promedio_elem.appendChild(doc.createTextNode(str(banco.promedio())))
+        banco_elem.appendChild(promedio_elem)
+
+        root.appendChild(banco_elem)
+
+    with open('promedioPorBanco_MD.xml', 'w', encoding='UTF-8') as file:
+        file.write(doc.toprettyxml(indent='     '))
+
 
 if __name__ == '__main__':
     opc = 0
@@ -117,7 +140,7 @@ if __name__ == '__main__':
 
         elif opc == 4:
             print('')
-            #EscribirArchivoMD()
+            EscribirArchivoMD()
 
         elif opc == 5:
             print('')
