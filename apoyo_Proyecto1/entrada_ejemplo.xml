@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<juego>
+    <mazo_disponible>
+        <cartas>
+            <carta color="#c72623">4</carta>
+            <carta color="#eFC12C">7</carta>
+            <carta color="#15629b">2</carta>
+            <carta color="#39843e">9</carta>
+            <carta color="#eFC12C">3</carta>
+            <carta color="#c72623">6</carta>
+            <carta color="#15629b">5</carta>
+            <carta color="#39843e">1</carta>
+            <carta color="#c72623">8</carta>
+            <carta color="#eFC12C">1</carta>
+            <carta color="#15629b">3</carta>
+            <carta color="#39843e">6</carta>
+            <carta color="#c72623">2</carta>
+            <carta color="#eFC12C">9</carta>
+            <carta color="#15629b">4</carta>
+            <carta color="#39843e">7</carta>
+            <carta color="#c72623">5</carta>
+            <carta color="#eFC12C">2</carta>
+            <carta color="#15629b">8</carta>
+            <carta color="#39843e">3</carta>
+            <carta color="#eFC12C">6</carta>
+            <carta color="#15629b">9</carta>
+            <carta color="#39843e">5</carta>
+            <carta color="#c72623">3</carta>
+            <carta color="#eFC12C">4</carta>
+            <carta color="#15629b">7</carta>
+            <carta color="#39843e">8</carta>
+            <carta color="#c72623">9</carta>
+            <carta color="#eFC12C">5</carta>
+            <carta color="#15629b">1</carta>
+            <carta color="#39843e">2</carta>
+            <carta color="#c72623">7</carta>
+            <carta color="#eFC12C">8</carta>
+            <carta color="#15629b">6</carta>
+            <carta color="#39843e">4</carta>
+            <carta color="#c72623">1</carta>
+            <carta color="#eFC12C">3</carta>
+            <carta color="#15629b">5</carta>
+            <carta color="#39843e">7</carta>
+            <carta color="#c72623">6</carta>
+            <carta color="#eFC12C">9</carta>
+            <carta color="#15629b">2</carta>
+            <carta color="#39843e">1</carta>
+            <carta color="#c72623">4</carta>
+            <carta color="#eFC12C">7</carta>
+            <carta color="#15629b">3</carta>
+            <carta color="#39843e">6</carta>
+            <carta color="#c72623">8</carta>
+            <carta color="#eFC12C">2</carta>
+            <carta color="#15629b">9</carta>
+            <carta color="#39843e">5</carta>
+        </cartas>
+    </mazo_disponible>
+    <jugadores>
+        <jugador>Juana del Arco</jugador>
+        <jugador>María Quintana</jugador>
+        <jugador>Sarah Junior</jugador>
+        <jugador>Pedro Pineda</jugador>
+    </jugadores>
+    <partidas>
+        <partida nombre="Partida1">
+            <shuffles>
+                <shuffle>HALF_SHUFFLE</shuffle>
+                <shuffle x="3">RIGHT</shuffle>
+                <shuffle>FARO_SHUFFLE</shuffle>
+            </shuffles>
+        </partida>
+    </partidas>
+</juego>
