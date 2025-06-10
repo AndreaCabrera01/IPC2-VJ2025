@@ -1,0 +1,11 @@
+digraph listaCircular {
+ splines=polyline;
+ node [shape=box, style=filled];
+ node0 [label="A"]; 
+ node1 [label="B"]; 
+ node2 [label="C"]; 
+ node0 -> node1;
+ node1 -> node2;
+ node2 -> node0; 
+  { rank = same; node0; node1; node2; }
+}

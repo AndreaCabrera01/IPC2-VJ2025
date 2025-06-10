@@ -1,0 +1,14 @@
+digraph listaDCEnlazada {
+ splines=polyline;
+ node [shape=box, style=filled];
+ edge [dir=both];
+ node0 [label="1"]; 
+ node1 [label="2"]; 
+ node2 [label="3"]; 
+ node3 [label="xd"]; 
+ node0 -> node1;
+ node1 -> node2;
+ node2 -> node3;
+ node3 -> node0; 
+  { rank = same; node0 node1 node2 node3 }
+}

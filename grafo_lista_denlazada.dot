@@ -1,0 +1,11 @@
+digraph listaDEnlazada {
+ splines=polyline;
+ node [shape=box, style=filled];
+ edge [dir=both];
+ node0 [label="Andrea"]; 
+ node1 [label="María"]; 
+ node2 [label="Cabrera"]; 
+ node0 -> node1;
+ node1 -> node2;
+  { rank = same; node0 node1 node2 }
+}

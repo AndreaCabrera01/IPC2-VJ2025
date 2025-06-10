@@ -1,11 +1,22 @@
 # elementTree:
 import xml.etree.ElementTree as ET
-
+from os import system
 from Objetos.Carta import Carta
 from Estructuras.ListaCircular.ListaCircular import ListaCircular
 
 mazo = ListaCircular()
 
+def generar_reporte():
+    reporte = mazo.generarGrafico()
+    with open("grafo_mazo.dot", "w") as file:
+        file.write(reporte)
+
+    system('dot -Tpdf grafo_mazo.dot -o Reporte_graphviz.pdf')
+    print('Reporte Generado: Reporte_graphviz.pdf')
+
+def mover_posicion(movimientos):
+    mazo.shuffle_right(movimientos=movimientos)
+    print(f'Lista Movida {movimientos} posiciones')
 
 def leer_archivo(archivo):
     try:
@@ -26,7 +37,7 @@ def leer_archivo(archivo):
             else:
                 print("Maximo de cartas alcanzado (51)")
                 break
-        print("Leído")
+
         return True
     except FileNotFoundError:
         print(f"Archivo no encontrado: {archivo}")

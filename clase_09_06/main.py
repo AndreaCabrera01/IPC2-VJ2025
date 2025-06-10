@@ -1,6 +1,6 @@
 import customtkinter as ctk
 
-from utils import leer_archivo
+from utils import leer_archivo, generar_reporte, mover_posicion
 
 # apariencia y tema:
 ctk.set_appearance_mode("Dark") # Light, Dark, System
@@ -58,6 +58,12 @@ class App(ctk.CTk):
         self.input_label.pack(pady=20)
         self.input_entry = ctk.CTkEntry(self.subwindow, width=200, font=("Arial", 18))
         self.input_entry.pack(pady=10)
+
+        self.shuffle_button = ctk.CTkButton(self.subwindow, text="Mover", width=200, height=50, font=("Arial", 18), command=lambda: mover_posicion(int(self.input_entry.get())))
+        self.shuffle_button.pack(pady=20)
+
+        self.boton_reporte = ctk.CTkButton(self.subwindow, text="Generar Reporte", width=200, height=50, font=("Arial", 18), command=generar_reporte)
+        self.boton_reporte.pack(pady=40)
 
 
 

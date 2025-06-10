@@ -41,3 +41,36 @@ class ListaCircular:
             print(actual.dato)
             actual = actual.siguiente
             elemento+=1
+
+    def generarGrafico(self):
+        graphvizTXT = '''digraph ReporteMazo {\n
+    splines=ortho;
+    node [shape=box; style=filled];
+    subgraph cluster_mazo {
+    label=\"Lista Circular - Mazo\"
+    bgcolor=gray;
+'''
+
+        # Crear nodos:
+        actual = self.primero
+        for i in range(self.size):
+            graphvizTXT += f'node{i} [label=\"{actual.dato.valor}\", fillcolor=\"{actual.dato.color}\"];\n'
+            actual = actual.siguiente
+
+        # conexiones:
+        for i in range(self.size - 1):
+            graphvizTXT += f'node{i} -> node{i+1} [color=black];\n'
+        
+        # conexion circular:
+        if self.size > 1:
+            graphvizTXT+= f'node{self.size-1} -> node0;\n'
+
+        # Nodos con el mismo rango:
+        graphvizTXT += "{rank=same; "
+        for i in range(self.size):
+            graphvizTXT += f'node{i}; '
+        graphvizTXT+="}\n"
+        
+        graphvizTXT += "}\n}"
+
+        return graphvizTXT
