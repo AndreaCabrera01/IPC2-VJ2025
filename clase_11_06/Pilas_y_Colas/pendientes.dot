@@ -1,0 +1,14 @@
+digraph Cola {
+ rankdir=LR; node [shape=record]; 
+nodo0 [label="{ Receta de Andrea }"];
+nodo0 -> nodo1;
+nodo1 [label="{ Receta de Ale }"];
+nodo1 -> nodo2;
+nodo2 [label="{ Receta de Luna }"];
+nodo2 -> nodo3;
+nodo3 [label="{ Receta de Kiara }"];
+nodo3 -> nodo4;
+nodo4 [label="{ Receta de Pablo }"];
+nodo4 -> nodo5;
+nodo5 [label="{ Receta de Pedro }"];
+}

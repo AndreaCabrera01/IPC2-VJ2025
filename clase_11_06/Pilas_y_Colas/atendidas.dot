@@ -1,0 +1,8 @@
+digraph Pila {
+ node [shape=record]; 
+nodo0 [label="{ Receta de Luna }"];
+nodo0 -> nodo1;
+nodo1 [label="{ Receta de Ale }"];
+nodo1 -> nodo2;
+nodo2 [label="{ Receta de Andrea }"];
+}
