@@ -74,6 +74,49 @@ def limpiar_usuarios():
     listadoUsuarios = []
     return jsonify({'message': 'Listado de usuarios exitosamente limpiados.'}), 200
 
+# ELIMINAR USUARIO ESPECÍFICO:
+@app.route('/api/usuarios/eliminar/<int:id>', methods=['DELETE'])
+def eliminar_usuario(id):
+    global listadoUsuarios
+
+    for usuario in listadoUsuarios:
+        if usuario.id == id:
+            listadoUsuarios.remove(usuario)
+            return jsonify({'message': 'Usuario eliminado correctamente.'}), 200
+    
+    return jsonify({'error': 'Usuario no encontrado'}), 404
+
+@app.route('/api/usuarios/getUser/<int:id>', methods=['GET'])
+def get_usuario(id):
+    for usuario in listadoUsuarios:
+        if usuario.id == id:
+            return jsonify({
+                'usuario': usuario.usuario,
+                'fechaCreacion': usuario.fechaCreacion,
+                'rol': usuario.rol,
+                'id': usuario.id
+            }), 200
+    
+    return jsonify({'error': 'Usuario no encontrado'}), 404
+
+@app.route('/api/usuarios/updatePassword', methods=['PUT'])
+def update_password():
+    data = request.get_json()
+
+    # TIPO DE JSON A ENVIAR:
+    # {
+    #     'newPassword': nuevaPassword,
+    #     'id': 1
+    # }
+
+    if not data or 'id' not in data or 'newPassword' not in data:
+        return jsonify({'error': 'Faltan campos en el JSON'}), 400
+
+    for usuario in listadoUsuarios:
+        if usuario.id == data['id']:
+            usuario.password = data['newPassword']
+            return jsonify({'message': 'Contraseña actualizada correctamente'}), 200
+    return jsonify({'error': 'Usuario no encontrado'}), 404
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
