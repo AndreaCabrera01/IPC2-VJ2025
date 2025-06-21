@@ -19,12 +19,12 @@ class MatrizDispersa():
             nodoFila.acceso = nuevo
         else: # Si ya está apuntanto a un nodo, debemos insertarlo ORDENADAMENTE
 
-            # Si el nuevo nodo es menor (altura) que el acceso actual.
+            # Si el nuevo nodo es menor que el acceso actual.
             if nuevo.y < nodoFila.acceso.y:
                 nuevo.siguiente = nodoFila.acceso
                 nodoFila.acceso.anterior = nuevo
                 nodoFila.acceso = nuevo
-            else: # SI no se cumple, se busca de lado a lado en dónde se inserta:
+            else: # SI no se cumple, se busca en dónde se inserta:
                 actual = nodoFila.acceso
                 while actual is not None:
                     if nuevo.y < actual.y:
@@ -52,8 +52,7 @@ class MatrizDispersa():
                 nuevo.abajo = nodoColumna.acceso
                 nodoColumna.acceso.arriba = nuevo
                 nodoColumna.acceso = nuevo
-            else:  # Si no se cumple, se busca de arriba hacia abajo para buscar dónde
-                # insertarlo.
+            else:  # Si no se cumple, se busca para buscar dónde insertarlo.
                 actual = nodoColumna.acceso
                 while actual is not None:
                     if nuevo.x < actual.x:
