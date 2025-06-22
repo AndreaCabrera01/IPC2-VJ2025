@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPC2 - LIBRARY </title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-gray-50">
+
+    {% include 'navBar.html' %}
+
+    <section id="home" class="pt-16 bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                        IPC2 Library
+                        <span class="text-blue-600">ejemplo</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Aquí encontrarás diferentes libros e información.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                            <i class="fas fa-search mr-2"></i>
+                            Ver Información
+                        </button>
+                        <button class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition duration-300">
+                            <i class="fas fa-id-card mr-2"></i>
+                            Iniciar Sesión
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-white rounded-2xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition duration-500">
+                        <div class="grid grid-cols-3 gap-4 mb-6">
+                            <div class="bg-red-100 h-32 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-book text-red-500 text-2xl"></i>
+                            </div>
+                            <div class="bg-green-100 h-32 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-laptop text-green-500 text-2xl"></i>
+                            </div>
+                            <div class="bg-purple-100 h-32 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-users text-purple-500 text-2xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Libros</h3>
+                        <p class="text-gray-600">Gestiona y revisa diferentes medios.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">¿Cómo funciona?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi perspiciatis aspernatur quo numquam ducimus necessitatibus non architecto doloribus cumque ratione mollitia iste, voluptatem nam odio! Omnis laboriosam porro optio enim.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Configuracion -->
+                <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition duration-300">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-wifi text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Configuraciones en línea</h3>
+                    <p class="text-gray-600 mb-4">
+                        Por medio de XML, se cargan y configuran libros.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Carga XML</li>
+                        <li>• Edición de XML</li>
+                        <li>• Limpiar datos</li>
+                    </ul>
+                </div>
+
+
+                <!-- Ver datos -->
+                <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition duration-300">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-child text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Lee libros</h3>
+                    <p class="text-gray-600 mb-4">
+                        Disfruta los libros
+                    </p>
+                    
+                </div>
+
+                <!-- Ver -->
+                <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition duration-300">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-search text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Ver datos</h3>
+                    <p class="text-gray-600 mb-4">
+                        Revisa lo que se ha cargado.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Busca libros</li>
+                        <li>• Edita datos</li>
+                    </ul>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+</body>
+{% include 'footer.html' %}
+
+</html>

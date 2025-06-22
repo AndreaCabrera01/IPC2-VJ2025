@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <title>IPC2 LIBRARY</title>
+
+    <style>
+        .bg-pattern {
+          background-color: #fefefe;
+          background-image: url("data:image/svg+xml,%3Csvg width='44' height='12' viewBox='0 0 44 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 12v-2L0 0v10l4 2h16zm18 0l4-2V0L22 10v2h16zM20 0v8L4 0h16zm18 0L22 8V0h16z' fill='%23e6edff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+    </style>
+      
+  </head>
+  <body>
+    {% include "navBar.html" %}
+
+    <div class="min-h-screen bg-pattern flex items-center justify-center p-4">
+        <div class="flex w-full h-full">
+          <!-- IZQUIERDA -->
+          <div class="w-1/2 bg-gray-400/50 flex flex-col items-center p-8">
+            <div class="w-full max-w-2xl">
+              <h1 class="text-4xl font-bold text-black text-center">Subir Archivo</h1>
+              <p class="text-black mt-4 text-center">Selecciona el Archivo .xml de configuración</p>
+      
+              <form enctype="multipart/form-data" method="POST" action="{% url 'verXML' %}" class="mt-4">
+                {% csrf_token %}
+                <input type="file" id="file" name="file" accept="text/xml" class="w-full" required />
+                <button type="submit" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                  Cargar Archivo
+                </button>
+              </form>
+      
+      
+              
+              <textarea class="w-full h-96 mt-4 rounded-lg p-4" name="xml" id="xml" placeholder="Aquí se mostrará el contenido del archivo .xml">{{ xml_content }}</textarea>
+              <form enctype="multipart/form-data" method="POST" action="{% url 'subirXML' %}">
+                {% csrf_token %}
+                <input type="hidden" name="xml" value="{{ xml_content|escape }}" />
+                <button type="submit" class="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full">
+                  Subir Archivo
+                </button>
+              </form>
+              
+            </div>
+          </div>
+      
+          <!-- DERECHA -->
+          <div class="w-1/2 bg-red-200/50 flex flex-col items-center p-8">
+            <div class="w-full max-w-2xl">
+              <h1 class="text-4xl font-bold text-black text-center">Respuesta</h1>
+              <textarea
+                class="w-full h-96 mt-4 rounded-lg p-4"
+                placeholder="Aquí se mostrará la respuesta del servidor"
+              >{% if response %}{{ response }}{% endif %}</textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+  </body>
+
+  {% include 'footer.html' %}
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPC2 - LIBRARY </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    {% include 'navBar.html' %}
+
+    <!-- COntenido  -->
+    <main class="max-w-7xl mt-12 mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Pagina --> 
+        <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-2">Colección</h2>
+            <p class="text-gray-600 mb-4">Descubre libros</p>
+            
+        </div>
+
+        <!-- Books -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+
+
+            {% for libro in libros %}
+            <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                <div class="aspect-[3/4] bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                    {% if libro.imagen %}
+                    <img src="{{ libro.imagen }}" alt="{{ libro.titulo }}" class="w-full h-full object-cover">
+                    {% else %}
+                    <img src="/placeholder.svg?height=320&width=240" alt="The Great Gatsby" class="w-full h-full object-cover">
+                    {% endif %}
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg text-gray-900 mb-2 line-clamp-2">{{ libro.titulo }}</h3>
+                    <p class="text-sm text-gray-600 mb-2">Autor: {{ libro.autor }}</p>
+                    <p class="text-sm text-gray-700 mb-3 line-clamp-3">{{ libro.descripcion }}</p>
+                    <div class="flex items-center justify-between">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            Disponible
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        
+    </main>
+
+    
+</body>
+</html>
