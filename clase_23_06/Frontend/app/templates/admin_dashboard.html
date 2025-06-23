@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#64748b',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    {% include 'admin_navbar.html' %}
+
+    <!-- Main -->
+    <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Bienvenido -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Dashboard de Administrador</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Maneja las configuraciones y revisa las que ya existen.
+            </p>
+        </div>
+
+        <!-- Tarjetas -->
+        <div class="flex flex-col md:flex-row gap-8 justify-center items-center max-w-4xl mx-auto">
+            <!-- Upload -->
+            <div class="w-full md:w-80">
+                <button class="group w-full bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200 hover:border-primary/20 p-8 text-left">
+                    <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-lg mb-6 group-hover:bg-blue-200 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
+                        Sube las configuraciones
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Sube un XML de configuraciones para que funcione el sistema.
+                    </p>
+                    <div class="flex items-center text-primary font-medium group-hover:text-primary/80 transition-colors duration-300">
+                        <span>Ir</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Revisar Configs -->
+            <div class="w-full md:w-80">
+                <button class="group w-full bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200 hover:border-primary/20 p-8 text-left">
+                    <div class="flex items-center justify-center w-16 h-16 bg-green-100 rounded-lg mb-6 group-hover:bg-green-200 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-green-600 transition-colors duration-300">
+                        Ver Configuraciones
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Revisa y valida las configuraciones que se tienen actualmente.
+                    </p>
+                    <div class="flex items-center text-green-600 font-medium group-hover:text-green-500 transition-colors duration-300">
+                        <span>Ir</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Detalles -->
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div class="bg-white rounded-lg shadow p-6 text-center">
+                <div class="text-2xl font-bold text-primary mb-2">24</div>
+                <div class="text-sm text-gray-600">Configuraciones subidas</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6 text-center">
+                <div class="text-2xl font-bold text-green-600 mb-2">100%</div>
+                <div class="text-sm text-gray-600">Satisfacción</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6 text-center">
+                <div class="text-2xl font-bold text-orange-600 mb-2">3</div>
+                <div class="text-sm text-gray-600">Problemas reportados xd</div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
