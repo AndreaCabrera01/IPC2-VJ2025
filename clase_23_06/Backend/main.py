@@ -1,5 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from xml.etree import ElementTree as ET
+from User import User
+from Animal import Animal
+from xml.dom import minidom
 
 app = Flask(__name__)
 CORS(app)
@@ -13,6 +17,9 @@ users = {
 }
 
 logueado_actual = ''
+listadoUsuarios = []
+listadoAnimales = []
+
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -44,7 +51,78 @@ def logout():
     global logueado_actual
     logueado_actual = ''
     return jsonify({"message": "Logout exitoso"}), 200
+
+
+@app.route('/procesarXML', methods=['POST'])
+def procesarXML():
+    if not logueado_actual == 'admin':
+        return jsonify({"error": "No tienes permisos para procesar XML"}), 403
     
+    print("XML QUE EL FRONT NOS ENVÍA")
+    xml_file = request.data
+
+    print(xml_file)
+    
+    decodificar = xml_file.decode('utf-8')
+
+    root = ET.fromstring(decodificar)
+
+    contadorUsers = 0
+    contadorAnimales = 0
+
+    global listadoUsuarios, listadoAnimales
+
+    usuarios_xml = root.find('usuarios')
+    if usuarios_xml is not None:
+        for u in usuarios_xml.findall('usuario'):
+            username = u.attrib.get('user')
+            password = u.attrib.get('password')
+            if username and password:
+                usuario = User(username, password)
+                listadoUsuarios.append(usuario)
+                contadorUsers += 1
+
+    mascotas_xml = root.find('mascotas')
+    if mascotas_xml is not None:
+        for m in mascotas_xml.findall('mascota'):
+            tipo = m.attrib.get('tipo')
+            nombre = m.text.strip() if m.text else ''
+            if tipo and nombre:
+                animal = Animal(nombre, tipo)
+                listadoAnimales.append(animal)
+                contadorAnimales += 1
+
+
+    # Creando XML de respuesta
+    response_root = ET.Element('respuesta')
+    ET.SubElement(response_root, 'usuarios_procesados').text = str(contadorUsers)
+    ET.SubElement(response_root, 'animales_procesados').text = str(contadorAnimales)
+
+    mensaje_xml = ET.tostring(response_root, encoding='utf-8', xml_declaration=True)
+
+    # prettify
+    parsed_xml = minidom.parseString(mensaje_xml)
+    pretty_xml = parsed_xml.toprettyxml(indent="  ")    
+
+    return jsonify({"message": pretty_xml}), 200
+    
+@app.route('/verUsuarios', methods=['GET'])
+def ver_usuarios():
+    if not logueado_actual == 'admin':
+        return jsonify({"error": "No tienes permisos para ver usuarios"}), 403
+    
+    usuarios = [{"username": user.username, "password": user.password} for user in listadoUsuarios]
+    return jsonify({"usuarios": usuarios}), 200
+
+@app.route('/verAnimales', methods=['GET'])
+def ver_animales():
+    if not logueado_actual == 'admin':
+        return jsonify({"error": "No tienes permisos para ver animales"}), 403
+    
+    animales = [{"nombre": animal.nombre, "tipo": animal.tipo} for animal in listadoAnimales]
+    return jsonify({"animales": animales}), 200
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1')
 

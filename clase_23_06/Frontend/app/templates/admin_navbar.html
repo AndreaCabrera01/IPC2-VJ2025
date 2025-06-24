@@ -1,20 +1,19 @@
- <!-- Header -->
- <header class="bg-white shadow-sm border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-            <div class="flex items-center">
-                <div class="flex-shrink-0">
-                    <h1 class="text-xl font-semibold text-gray-900">Admin Dashboard</h1>
-                </div>
-            </div>
-            <div class="flex items-center space-x-4">
-                <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                        <span class="text-white text-sm font-medium">A</span>
-                    </div>
-                    <span class="text-sm font-medium text-gray-700">Admin User</span>
-                </div>
-            </div>
+<!-- Header -->
+<header class="bg-white shadow-sm border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <h1 class="text-xl font-semibold text-gray-900">Admin Dashboard</h1>
         </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2">
+          <a href="{% url 'admin_dashboard' %}"><span class="text-gray-700 text-sm font-medium">Regresar</span></a>
+
+          <a href="{% url 'logOut' %}" class="text-sm font-medium text-red-700">Log out</a>
+        </div>
+      </div>
     </div>
+  </div>
 </header>

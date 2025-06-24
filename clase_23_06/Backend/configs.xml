@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuraciones>
+    <usuarios>
+        <usuario user="juanperez01" password="abc12345">Juan Pérez</usuario>
+        <usuario user="maria.lopez" password="pass45678">María López</usuario>
+        <usuario user="carlos_mtz" password="qwerty789">Carlos Martínez</usuario>
+        <usuario user="ana_rodri" password="zxcvbnm00">Ana Rodríguez</usuario>
+        <usuario user="lucia_fern" password="lucia2025">Lucía Fernández</usuario>
+    </usuarios>
+    <mascotas>
+        <mascota tipo="perro">Max</mascota>
+        <mascota tipo="gato">Misu</mascota>
+        <mascota tipo="perro">Rocky</mascota>
+        <mascota tipo="gato">Luna</mascota>
+        <mascota tipo="perro">Bobby</mascota>
+        <mascota tipo="gato">Nube</mascota>
+        <mascota tipo="perro">Rex</mascota>
+        <mascota tipo="gato">Pelusa</mascota>
+        <mascota tipo="perro">Toby</mascota>
+        <mascota tipo="gato">Cleo</mascota>
+    </mascotas>
+</configuraciones>
