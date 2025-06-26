@@ -50,7 +50,9 @@ def iniciarSesion(request):
                         return redireccionar
                         
                     else:
-                        return HttpResponse("Rol aún no manejado", status=200)
+                        redireccionar = redirect('user_page')
+                        redireccionar.set_cookie('logueado', username)
+                        return redireccionar
                 else:
                     return render(request, 'login.html', {
                         'form': form,
@@ -175,4 +177,65 @@ def verConfigs(request):
     except Exception as e:
         print(f"Error al cargar configuraciones: {e}")
         return render(request, 'verConfigs.html', {'error': 'Error al cargar las configuraciones'})
+
+def user_page(request):
+    try:
+        if request.COOKIES.get('logueado'):
+            username = request.COOKIES.get('logueado')
+            return render(request, "user_page.html", {'username':username})
+        else:
+            return redirect('iniciarSesion')
+    except Exception as e:
+        return render(request, 'user_page.html', {'Error': 'No se puede cargar la página del usuario'})
     
+
+def misAnimales(request):
+    try:
+        if request.COOKIES.get('logueado'):
+            username = request.COOKIES.get('logueado')
+
+            response = requests.get(f'{api_url}/verMisAnimales/{username}')
+
+            if response.status_code == 200:
+                animales = response.json().get('animales', [])
+            else:
+                animales = []
+
+            return render(request, 'mis_animales.html', {'animals': animales})
+    except Exception as e:
+        print(f"Error al cargar mis animales: {e}")
+        return render(request, 'mis_animales.html', {'error': 'Error al cargar mis animales'})
+    
+def reporteAnimales(request):
+    context = {}
+
+    try:
+        # Verificar si el usuario está logueado
+        if request.COOKIES.get('logueado'):
+            username = request.COOKIES.get('logueado')
+            print(f"Usuario logueado: {username}")
+
+            # GET:
+            response = requests.get(f'{api_url}/reporteAnimales/{username}/6')
+
+            if response.status_code == 200:
+                data = response.json()
+
+                nombres = data.get('nombres', [])
+                edades = data.get('edades', [])
+                datos = list(zip(nombres, edades))
+                context = {
+                    'nombres': json.dumps(nombres),                    
+                    'edades': json.dumps(edades),
+                    'datos': datos
+                }
+            else:
+                print("Error al obtener animales:", response.json())
+                context = {'error': 'Error al obtener reporte de animales'}
+            return render(request, 'reporte_animales.html', context)
+
+        else:
+            return render(request, 'reporte_animales.html', None)
+    except Exception as e:
+        print(f"Error al cargar reporte de animales: {e}")
+        return render(request, 'reporte_animales.html', {'error': 'Error al cargar reporte de animales'})

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See Configs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+    <!-- Chart.js CDN -->
+
+    <!-- jsPDF CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- html2canvas CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+<body class="bg-gray-50 min-h-screen">
+    {% include 'user_navbar.html' %}
+    <div class="container mx-auto p-6 max-w-7xl">
+        <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">Top de mascota por edad</h1>
+        
+        <!-- TOP   -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="container mt-5 p-4">
+                <div id="graphArea" class="container bg-gray-200/80 rounded">
+                  <h1 class="text-5xl font-bold text-black m-5">
+                    Gráfico: Mascotas ordenadas por Edad
+                  </h1>
+        
+                  {% for nombre, edad in datos %}
+                    <p class="text-2xl text-black m-5">{{ nombre }}: {{ edad }}</p>
+                  {% endfor %}
+        
+                  <canvas id="myChart" width="80%" height="20%"></canvas>
+                </div>
+        
+                <button
+                  id="generatePDF"
+                  class="bg-blue-500 transform hover:scale-105 text-white py-2 px-4 rounded"
+                >
+                  Descargar PDF
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    var Nombres = {{ nombres | safe }}
+    var Quantity = {{ edades | safe }}
+  
+    var ctx = document.getElementById('myChart').getContext('2d');
+  
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Nombres,
+            datasets: [{
+                label: "REPORTE TOP",
+                data: Quantity,
+                backgroundColor: [
+                  'rgba(255, 99, 132, 0.8)',
+                  'rgba(54, 162, 235, 0.8)',
+                  'rgba(255, 206, 86, 0.8)',
+                  'rgba(75, 192, 192, 0.8)',
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+              ],
+              borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    })
+  
+    document.getElementById('generatePDF').addEventListener('click', function() {
+      const graphArea = document.getElementById('graphArea'); 
+  
+      html2canvas(graphArea).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF('landscape');
+  
+        const imgWidth = 280;
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+        pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+        pdf.save("graph.pdf");
+      });
+    });
+  </script>

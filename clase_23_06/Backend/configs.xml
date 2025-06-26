@@ -7,16 +7,37 @@
         <usuario user="ana_rodri" password="zxcvbnm00">Ana Rodríguez</usuario>
         <usuario user="lucia_fern" password="lucia2025">Lucía Fernández</usuario>
     </usuarios>
+
     <mascotas>
-        <mascota tipo="perro">Max</mascota>
-        <mascota tipo="gato">Misu</mascota>
-        <mascota tipo="perro">Rocky</mascota>
-        <mascota tipo="gato">Luna</mascota>
-        <mascota tipo="perro">Bobby</mascota>
-        <mascota tipo="gato">Nube</mascota>
-        <mascota tipo="perro">Rex</mascota>
-        <mascota tipo="gato">Pelusa</mascota>
-        <mascota tipo="perro">Toby</mascota>
-        <mascota tipo="gato">Cleo</mascota>
+        <mascota tipo="perro" edad="3" cuidador="carlos_mtz">Duque</mascota>
+        <mascota tipo="gato" edad="6" cuidador="lucia_fern">Chispa</mascota>
+        <mascota tipo="gato" edad="4" cuidador="ana_rodri">Nina</mascota>
+        <mascota tipo="perro" edad="1" cuidador="carlos_mtz">Fido</mascota>
+        <mascota tipo="gato" edad="6" cuidador="carlos_mtz">Tina</mascota>
+        <mascota tipo="perro" edad="6" cuidador="juanperez01">Bobby</mascota>
+        <mascota tipo="perro" edad="4" cuidador="juanperez01">Rocky</mascota>
+        <mascota tipo="perro" edad="6" cuidador="ana_rodri">Simba</mascota>
+        <mascota tipo="gato" edad="5" cuidador="lucia_fern">Lulú</mascota>
+        <mascota tipo="perro" edad="5" cuidador="maria.lopez">Bruno</mascota>
+        <mascota tipo="perro" edad="2" cuidador="lucia_fern">Spike</mascota>
+        <mascota tipo="gato" edad="1" cuidador="juanperez01">Nube</mascota>
+        <mascota tipo="gato" edad="2" cuidador="maria.lopez">Mimi</mascota>
+        <mascota tipo="perro" edad="2" cuidador="maria.lopez">Rex</mascota>
+        <mascota tipo="perro" edad="5" cuidador="juanperez01">Max</mascota>
+        <mascota tipo="perro" edad="3" cuidador="ana_rodri">Terry</mascota>
+        <mascota tipo="gato" edad="3" cuidador="ana_rodri">Kitty</mascota>
+        <mascota tipo="gato" edad="6" cuidador="maria.lopez">Cleo</mascota>
+        <mascota tipo="gato" edad="5" cuidador="carlos_mtz">Michi</mascota>
+        <mascota tipo="perro" edad="4" cuidador="carlos_mtz">Zeus</mascota>
+        <mascota tipo="perro" edad="6" cuidador="lucia_fern">Thor</mascota>
+        <mascota tipo="gato" edad="2" cuidador="juanperez01">Misu</mascota>
+        <mascota tipo="gato" edad="7" cuidador="carlos_mtz">Sombra</mascota>
+        <mascota tipo="perro" edad="7" cuidador="lucia_fern">Coco</mascota>
+        <mascota tipo="perro" edad="2" cuidador="ana_rodri">Jack</mascota>
+        <mascota tipo="gato" edad="3" cuidador="lucia_fern">Manchas</mascota>
+        <mascota tipo="gato" edad="3" cuidador="juanperez01">Luna</mascota>
+        <mascota tipo="gato" edad="4" cuidador="maria.lopez">Pelusa</mascota>
+        <mascota tipo="perro" edad="3" cuidador="maria.lopez">Toby</mascota>
+        <mascota tipo="gato" edad="1" cuidador="ana_rodri">Pantera</mascota>
     </mascotas>
 </configuraciones>

@@ -9,5 +9,8 @@ urlpatterns = [
     path('cargarXML/', views.cargarXML, name='cargarXML'),
     path('verXML/', views.verXML, name='verXML'),
     path('subirXML/', views.subirXML, name='subirXML'),
-    path('verConfigs/', views.verConfigs, name='verConfigs')
+    path('verConfigs/', views.verConfigs, name='verConfigs'),
+    path('user_page/', views.user_page, name='user_page'),
+    path('misAnimales/', views.misAnimales, name='misAnimales'),
+    path('reporteAnimales/', views.reporteAnimales, name='reporteAnimales')
 ]
